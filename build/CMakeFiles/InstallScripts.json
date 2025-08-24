@@ -1,0 +1,11 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/maxine/TradingSystem/build/cmake_install.cmake",
+		"/Users/maxine/TradingSystem/build/databento/cmake_install.cmake",
+		"/Users/maxine/TradingSystem/build/_deps/json-build/cmake_install.cmake",
+		"/Users/maxine/TradingSystem/build/_deps/httplib-build/cmake_install.cmake",
+		"/Users/maxine/TradingSystem/build/_deps/date_src-build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
