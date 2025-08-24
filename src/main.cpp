@@ -6,7 +6,7 @@ using namespace databento;
 
 int main() {
   auto client =
-      Historical::Builder().SetKey("db-cKcD6vutAWCuHSvjEq3yh75LgVb95").Build();
+      Historical::Builder().SetKey("").Build();
   auto print_trades = [](const Record& record) {
     const auto& trade_msg = record.Get<TradeMsg>();
     std::cout << trade_msg << '\n';
