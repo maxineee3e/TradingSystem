@@ -63,174 +63,52 @@ CMAKE_BINARY_DIR = /Users/maxine/TradingSystem/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/download_example.dir/all
-all: databento/all
+all: CMakeFiles/md_engine.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
-codegen: CMakeFiles/download_example.dir/codegen
-codegen: databento/codegen
+codegen: CMakeFiles/md_engine.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
-preinstall: databento/preinstall
+preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/download_example.dir/clean
-clean: databento/clean
+clean: CMakeFiles/md_engine.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory _deps/date_src-build
-
-# Recursive "all" directory target.
-_deps/date_src-build/all:
-.PHONY : _deps/date_src-build/all
-
-# Recursive "codegen" directory target.
-_deps/date_src-build/codegen:
-.PHONY : _deps/date_src-build/codegen
-
-# Recursive "preinstall" directory target.
-_deps/date_src-build/preinstall:
-.PHONY : _deps/date_src-build/preinstall
-
-# Recursive "clean" directory target.
-_deps/date_src-build/clean:
-.PHONY : _deps/date_src-build/clean
-
-#=============================================================================
-# Directory level rules for directory _deps/httplib-build
-
-# Recursive "all" directory target.
-_deps/httplib-build/all:
-.PHONY : _deps/httplib-build/all
-
-# Recursive "codegen" directory target.
-_deps/httplib-build/codegen:
-.PHONY : _deps/httplib-build/codegen
-
-# Recursive "preinstall" directory target.
-_deps/httplib-build/preinstall:
-.PHONY : _deps/httplib-build/preinstall
-
-# Recursive "clean" directory target.
-_deps/httplib-build/clean:
-.PHONY : _deps/httplib-build/clean
-
-#=============================================================================
-# Directory level rules for directory _deps/json-build
-
-# Recursive "all" directory target.
-_deps/json-build/all:
-.PHONY : _deps/json-build/all
-
-# Recursive "codegen" directory target.
-_deps/json-build/codegen:
-.PHONY : _deps/json-build/codegen
-
-# Recursive "preinstall" directory target.
-_deps/json-build/preinstall:
-.PHONY : _deps/json-build/preinstall
-
-# Recursive "clean" directory target.
-_deps/json-build/clean:
-.PHONY : _deps/json-build/clean
-
-#=============================================================================
-# Directory level rules for directory databento
-
-# Recursive "all" directory target.
-databento/all: databento/CMakeFiles/databento.dir/all
-databento/all: _deps/json-build/all
-databento/all: _deps/httplib-build/all
-databento/all: _deps/date_src-build/all
-.PHONY : databento/all
-
-# Recursive "codegen" directory target.
-databento/codegen: databento/CMakeFiles/databento.dir/codegen
-databento/codegen: _deps/json-build/codegen
-databento/codegen: _deps/httplib-build/codegen
-databento/codegen: _deps/date_src-build/codegen
-.PHONY : databento/codegen
-
-# Recursive "preinstall" directory target.
-databento/preinstall: _deps/json-build/preinstall
-databento/preinstall: _deps/httplib-build/preinstall
-databento/preinstall: _deps/date_src-build/preinstall
-.PHONY : databento/preinstall
-
-# Recursive "clean" directory target.
-databento/clean: databento/CMakeFiles/databento.dir/clean
-databento/clean: _deps/json-build/clean
-databento/clean: _deps/httplib-build/clean
-databento/clean: _deps/date_src-build/clean
-.PHONY : databento/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/download_example.dir
+# Target rules for target CMakeFiles/md_engine.dir
 
 # All Build rule for target.
-CMakeFiles/download_example.dir/all: databento/CMakeFiles/databento.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/download_example.dir/build.make CMakeFiles/download_example.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/download_example.dir/build.make CMakeFiles/download_example.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxine/TradingSystem/build/CMakeFiles --progress-num=32,33 "Built target download_example"
-.PHONY : CMakeFiles/download_example.dir/all
+CMakeFiles/md_engine.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxine/TradingSystem/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target md_engine"
+.PHONY : CMakeFiles/md_engine.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/download_example.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/maxine/TradingSystem/build/CMakeFiles 33
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/download_example.dir/all
+CMakeFiles/md_engine.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/maxine/TradingSystem/build/CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/md_engine.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/maxine/TradingSystem/build/CMakeFiles 0
-.PHONY : CMakeFiles/download_example.dir/rule
+.PHONY : CMakeFiles/md_engine.dir/rule
 
 # Convenience name for target.
-download_example: CMakeFiles/download_example.dir/rule
-.PHONY : download_example
+md_engine: CMakeFiles/md_engine.dir/rule
+.PHONY : md_engine
 
 # codegen rule for target.
-CMakeFiles/download_example.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/download_example.dir/build.make CMakeFiles/download_example.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxine/TradingSystem/build/CMakeFiles --progress-num=32,33 "Finished codegen for target download_example"
-.PHONY : CMakeFiles/download_example.dir/codegen
+CMakeFiles/md_engine.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxine/TradingSystem/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Finished codegen for target md_engine"
+.PHONY : CMakeFiles/md_engine.dir/codegen
 
 # clean rule for target.
-CMakeFiles/download_example.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/download_example.dir/build.make CMakeFiles/download_example.dir/clean
-.PHONY : CMakeFiles/download_example.dir/clean
-
-#=============================================================================
-# Target rules for target databento/CMakeFiles/databento.dir
-
-# All Build rule for target.
-databento/CMakeFiles/databento.dir/all:
-	$(MAKE) $(MAKESILENT) -f databento/CMakeFiles/databento.dir/build.make databento/CMakeFiles/databento.dir/depend
-	$(MAKE) $(MAKESILENT) -f databento/CMakeFiles/databento.dir/build.make databento/CMakeFiles/databento.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxine/TradingSystem/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31 "Built target databento"
-.PHONY : databento/CMakeFiles/databento.dir/all
-
-# Build rule for subdir invocation for target.
-databento/CMakeFiles/databento.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/maxine/TradingSystem/build/CMakeFiles 31
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 databento/CMakeFiles/databento.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/maxine/TradingSystem/build/CMakeFiles 0
-.PHONY : databento/CMakeFiles/databento.dir/rule
-
-# Convenience name for target.
-databento: databento/CMakeFiles/databento.dir/rule
-.PHONY : databento
-
-# codegen rule for target.
-databento/CMakeFiles/databento.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f databento/CMakeFiles/databento.dir/build.make databento/CMakeFiles/databento.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxine/TradingSystem/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31 "Finished codegen for target databento"
-.PHONY : databento/CMakeFiles/databento.dir/codegen
-
-# clean rule for target.
-databento/CMakeFiles/databento.dir/clean:
-	$(MAKE) $(MAKESILENT) -f databento/CMakeFiles/databento.dir/build.make databento/CMakeFiles/databento.dir/clean
-.PHONY : databento/CMakeFiles/databento.dir/clean
+CMakeFiles/md_engine.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/clean
+.PHONY : CMakeFiles/md_engine.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

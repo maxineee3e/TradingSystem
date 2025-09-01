@@ -1,48 +1,66 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.16)
 project(TradingSystem CXX)
 
-# C++ 标准
+# ==== C++ 标准 & 编译告警 ====
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# 默认构建类型
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE RelWithDebInfo CACHE STRING "Build type" FORCE)
 endif()
 
-# macOS: 自动设置 OpenSSL 路径（Homebrew）
-if(APPLE AND NOT DEFINED OPENSSL_ROOT_DIR)
-  execute_process(
-    COMMAND brew --prefix openssl@3
-    OUTPUT_VARIABLE _openssl_prefix
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-    ERROR_QUIET
-  )
-  if(EXISTS "${_openssl_prefix}")
-    set(OPENSSL_ROOT_DIR "${_openssl_prefix}" CACHE PATH "OpenSSL root (Homebrew)" FORCE)
-  endif()
-endif()
-
-# 确认子模块存在
-if(NOT EXISTS "${CMAKE_SOURCE_DIR}/databento/CMakeLists.txt")
-  message(FATAL_ERROR
-    "Databento submodule is missing.\n"
-    "Run:  git submodule update --init --recursive"
-  )
-endif()
-
-# 引入 Databento C++ SDK（子模块）
-add_subdirectory(databento)   # 定义目标：databento::databento
-
-# 你的可执行文件
-add_executable(download_example src/main.cpp)
-
-# 连接 Databento 目标（自动带上 include 路径和依赖库）
-target_link_libraries(download_example PRIVATE databento::databento)
-
-# 可选：更友好点的编译告警
-if(MSVC)
-  target_compile_options(download_example PRIVATE /W4)
+if (MSVC)
+  add_compile_options(/W4)
 else()
-  target_compile_options(download_example PRIVATE -Wall -Wextra -Wpedantic)
+  add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
+
+# ==== 头文件路径 ====
+# 你的目录形如：
+# include/
+#   core/*.h
+#   feed/*.h
+#   order_book/*.h
+# src/
+#   feed/*.cpp
+#   order_book/*.cpp
+#   main.cpp
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
+# ==== 源文件 ====
+set(FEED_SOURCES
+  src/feed/feed_handler.cpp
+  src/feed/message_parser.cpp
+  src/feed/socket_client.cpp
+)
+
+set(BOOK_SOURCES
+  src/order_book/order_book.cpp
+)
+
+# ==== 可执行文件（主程序）====
+add_executable(md_engine
+  src/main.cpp
+  ${FEED_SOURCES}
+  ${BOOK_SOURCES}
+)
+
+# macOS/Linux 上用到 <thread> 时链接 pthread（有的系统会自动处理，这里显式一下更稳）
+find_package(Threads REQUIRED)
+target_link_libraries(md_engine PRIVATE Threads::Threads)
+
+# ==== （可选）直接对接 Databento SDK 的示例可执行 ====
+# 如果你以后要用 C++ SDK 直连 Databento，可以开启下面这段：
+# ---------------------------------------------------------
+# if(NOT EXISTS "${CMAKE_SOURCE_DIR}/databento/CMakeLists.txt")
+#   message(STATUS "Databento SDK submodule not found; skipping md_databento target.")
+# else()
+#   add_subdirectory(databento)  # 生成目标 databento::databento
+#   add_executable(md_databento
+#     src/order_book/main_databento.cpp
+#     src/order_book/order_book.cpp
+#     src/feed/message_parser.cpp   # 如果还需要用到
+#   )
+#   target_link_libraries(md_databento PRIVATE databento::databento Threads::Threads)
+# endif()
+# ---------------------------------------------------------

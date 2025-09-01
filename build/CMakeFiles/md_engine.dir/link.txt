@@ -1,0 +1,1 @@
+/usr/bin/c++ -O2 -g -DNDEBUG -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/md_engine.dir/src/main.cpp.o CMakeFiles/md_engine.dir/src/feed/feed_handler.cpp.o CMakeFiles/md_engine.dir/src/feed/message_parser.cpp.o CMakeFiles/md_engine.dir/src/feed/socket_client.cpp.o CMakeFiles/md_engine.dir/src/order_book/order_book.cpp.o -o md_engine

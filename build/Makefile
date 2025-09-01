@@ -65,26 +65,6 @@ CMAKE_BINARY_DIR = /Users/maxine/TradingSystem/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target package
-package: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
-	/opt/homebrew/bin/cpack --config ./CPackConfig.cmake
-.PHONY : package
-
-# Special rule for the target package
-package/fast: package
-.PHONY : package/fast
-
-# Special rule for the target package_source
-package_source:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
-	/opt/homebrew/bin/cpack --config ./CPackSourceConfig.cmake /Users/maxine/TradingSystem/build/CPackSourceConfig.cmake
-.PHONY : package_source
-
-# Special rule for the target package_source
-package_source/fast: package_source
-.PHONY : package_source/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
@@ -104,51 +84,6 @@ rebuild_cache:
 # Special rule for the target rebuild_cache
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-.PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	/opt/homebrew/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
-	/opt/homebrew/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	/opt/homebrew/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
-	/opt/homebrew/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	/opt/homebrew/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
-	/opt/homebrew/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -182,37 +117,96 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named download_example
+# Target rules for targets named md_engine
 
 # Build rule for target.
-download_example: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 download_example
-.PHONY : download_example
+md_engine: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 md_engine
+.PHONY : md_engine
 
 # fast build rule for target.
-download_example/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/download_example.dir/build.make CMakeFiles/download_example.dir/build
-.PHONY : download_example/fast
+md_engine/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/build
+.PHONY : md_engine/fast
 
-#=============================================================================
-# Target rules for targets named databento
+src/feed/feed_handler.o: src/feed/feed_handler.cpp.o
+.PHONY : src/feed/feed_handler.o
 
-# Build rule for target.
-databento: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 databento
-.PHONY : databento
+# target to build an object file
+src/feed/feed_handler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/src/feed/feed_handler.cpp.o
+.PHONY : src/feed/feed_handler.cpp.o
 
-# fast build rule for target.
-databento/fast:
-	$(MAKE) $(MAKESILENT) -f databento/CMakeFiles/databento.dir/build.make databento/CMakeFiles/databento.dir/build
-.PHONY : databento/fast
+src/feed/feed_handler.i: src/feed/feed_handler.cpp.i
+.PHONY : src/feed/feed_handler.i
+
+# target to preprocess a source file
+src/feed/feed_handler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/src/feed/feed_handler.cpp.i
+.PHONY : src/feed/feed_handler.cpp.i
+
+src/feed/feed_handler.s: src/feed/feed_handler.cpp.s
+.PHONY : src/feed/feed_handler.s
+
+# target to generate assembly for a file
+src/feed/feed_handler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/src/feed/feed_handler.cpp.s
+.PHONY : src/feed/feed_handler.cpp.s
+
+src/feed/message_parser.o: src/feed/message_parser.cpp.o
+.PHONY : src/feed/message_parser.o
+
+# target to build an object file
+src/feed/message_parser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/src/feed/message_parser.cpp.o
+.PHONY : src/feed/message_parser.cpp.o
+
+src/feed/message_parser.i: src/feed/message_parser.cpp.i
+.PHONY : src/feed/message_parser.i
+
+# target to preprocess a source file
+src/feed/message_parser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/src/feed/message_parser.cpp.i
+.PHONY : src/feed/message_parser.cpp.i
+
+src/feed/message_parser.s: src/feed/message_parser.cpp.s
+.PHONY : src/feed/message_parser.s
+
+# target to generate assembly for a file
+src/feed/message_parser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/src/feed/message_parser.cpp.s
+.PHONY : src/feed/message_parser.cpp.s
+
+src/feed/socket_client.o: src/feed/socket_client.cpp.o
+.PHONY : src/feed/socket_client.o
+
+# target to build an object file
+src/feed/socket_client.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/src/feed/socket_client.cpp.o
+.PHONY : src/feed/socket_client.cpp.o
+
+src/feed/socket_client.i: src/feed/socket_client.cpp.i
+.PHONY : src/feed/socket_client.i
+
+# target to preprocess a source file
+src/feed/socket_client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/src/feed/socket_client.cpp.i
+.PHONY : src/feed/socket_client.cpp.i
+
+src/feed/socket_client.s: src/feed/socket_client.cpp.s
+.PHONY : src/feed/socket_client.s
+
+# target to generate assembly for a file
+src/feed/socket_client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/src/feed/socket_client.cpp.s
+.PHONY : src/feed/socket_client.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/download_example.dir/build.make CMakeFiles/download_example.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -220,7 +214,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/download_example.dir/build.make CMakeFiles/download_example.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -228,8 +222,32 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/download_example.dir/build.make CMakeFiles/download_example.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/order_book/order_book.o: src/order_book/order_book.cpp.o
+.PHONY : src/order_book/order_book.o
+
+# target to build an object file
+src/order_book/order_book.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/src/order_book/order_book.cpp.o
+.PHONY : src/order_book/order_book.cpp.o
+
+src/order_book/order_book.i: src/order_book/order_book.cpp.i
+.PHONY : src/order_book/order_book.i
+
+# target to preprocess a source file
+src/order_book/order_book.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/src/order_book/order_book.cpp.i
+.PHONY : src/order_book/order_book.cpp.i
+
+src/order_book/order_book.s: src/order_book/order_book.cpp.s
+.PHONY : src/order_book/order_book.s
+
+# target to generate assembly for a file
+src/order_book/order_book.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/src/order_book/order_book.cpp.s
+.PHONY : src/order_book/order_book.cpp.s
 
 # Help Target
 help:
@@ -238,18 +256,23 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... install"
-	@echo "... install/local"
-	@echo "... install/strip"
-	@echo "... list_install_components"
-	@echo "... package"
-	@echo "... package_source"
 	@echo "... rebuild_cache"
-	@echo "... databento"
-	@echo "... download_example"
+	@echo "... md_engine"
+	@echo "... src/feed/feed_handler.o"
+	@echo "... src/feed/feed_handler.i"
+	@echo "... src/feed/feed_handler.s"
+	@echo "... src/feed/message_parser.o"
+	@echo "... src/feed/message_parser.i"
+	@echo "... src/feed/message_parser.s"
+	@echo "... src/feed/socket_client.o"
+	@echo "... src/feed/socket_client.i"
+	@echo "... src/feed/socket_client.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/order_book/order_book.o"
+	@echo "... src/order_book/order_book.i"
+	@echo "... src/order_book/order_book.s"
 .PHONY : help
 
 
