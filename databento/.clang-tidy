@@ -1,0 +1,18 @@
+---
+Checks: >
+    -*,
+    bugprone-*,
+    -bugprone-easily-swappable-parameters,
+    clang-analyzer-*,
+    clang-diagnostic-*,
+    cppcore-guidelines-*,
+    google-*,
+    -google-readability-avoid-underscore-in-googletest-name,
+    -google-readability-casting,
+    -google-runtime-references,
+    modernize-deprecated-headers,
+    performance-*,
+    portability-*'
+WarningsAsErrors: '*'
+HeaderFilterRegex: ''
+FormatStyle: file

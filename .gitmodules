@@ -1,3 +1,0 @@
-[submodule "databento"]
-	path = databento
-	url = https://github.com/databento/databento-cpp.git
