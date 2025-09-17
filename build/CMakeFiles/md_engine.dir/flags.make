@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/maxine/TradingSystem/include
+CXX_INCLUDES = -I/Users/maxine/TradingSystem/include -I/Users/maxine/TradingSystem/databento/include -I/opt/homebrew/include
 
 CXX_FLAGSarm64 = -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -Wall -Wextra -Wpedantic
 

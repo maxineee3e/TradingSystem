@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/md_engine.dir/src/databento_source.cpp.o"
+  "CMakeFiles/md_engine.dir/src/databento_source.cpp.o.d"
   "CMakeFiles/md_engine.dir/src/feed/feed_handler.cpp.o"
   "CMakeFiles/md_engine.dir/src/feed/feed_handler.cpp.o.d"
   "CMakeFiles/md_engine.dir/src/feed/message_parser.cpp.o"

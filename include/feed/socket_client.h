@@ -9,7 +9,7 @@ namespace md {
 // 极简 Socket 客户端（模拟源）：内部线程周期性产出 L3 事件
 class SocketClient {
 public:
-  using Callback = std::function<void(const core::Event&)>;
+  using Callback = std::function<void(const Event&)>;
 
   explicit SocketClient(Callback cb) : cb_(std::move(cb)) {}
   ~SocketClient() { stop(); }

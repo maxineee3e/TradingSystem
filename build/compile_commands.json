@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/Users/maxine/TradingSystem/build",
+  "command": "/usr/bin/c++  -I/Users/maxine/TradingSystem/include -I/Users/maxine/TradingSystem/databento/include -I/opt/homebrew/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -Wall -Wextra -Wpedantic -o CMakeFiles/md_engine.dir/src/main.cpp.o -c /Users/maxine/TradingSystem/src/main.cpp",
+  "file": "/Users/maxine/TradingSystem/src/main.cpp",
+  "output": "CMakeFiles/md_engine.dir/src/main.cpp.o"
+},
+{
+  "directory": "/Users/maxine/TradingSystem/build",
+  "command": "/usr/bin/c++  -I/Users/maxine/TradingSystem/include -I/Users/maxine/TradingSystem/databento/include -I/opt/homebrew/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -Wall -Wextra -Wpedantic -o CMakeFiles/md_engine.dir/src/feed/feed_handler.cpp.o -c /Users/maxine/TradingSystem/src/feed/feed_handler.cpp",
+  "file": "/Users/maxine/TradingSystem/src/feed/feed_handler.cpp",
+  "output": "CMakeFiles/md_engine.dir/src/feed/feed_handler.cpp.o"
+},
+{
+  "directory": "/Users/maxine/TradingSystem/build",
+  "command": "/usr/bin/c++  -I/Users/maxine/TradingSystem/include -I/Users/maxine/TradingSystem/databento/include -I/opt/homebrew/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -Wall -Wextra -Wpedantic -o CMakeFiles/md_engine.dir/src/feed/message_parser.cpp.o -c /Users/maxine/TradingSystem/src/feed/message_parser.cpp",
+  "file": "/Users/maxine/TradingSystem/src/feed/message_parser.cpp",
+  "output": "CMakeFiles/md_engine.dir/src/feed/message_parser.cpp.o"
+},
+{
+  "directory": "/Users/maxine/TradingSystem/build",
+  "command": "/usr/bin/c++  -I/Users/maxine/TradingSystem/include -I/Users/maxine/TradingSystem/databento/include -I/opt/homebrew/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -Wall -Wextra -Wpedantic -o CMakeFiles/md_engine.dir/src/feed/socket_client.cpp.o -c /Users/maxine/TradingSystem/src/feed/socket_client.cpp",
+  "file": "/Users/maxine/TradingSystem/src/feed/socket_client.cpp",
+  "output": "CMakeFiles/md_engine.dir/src/feed/socket_client.cpp.o"
+},
+{
+  "directory": "/Users/maxine/TradingSystem/build",
+  "command": "/usr/bin/c++  -I/Users/maxine/TradingSystem/include -I/Users/maxine/TradingSystem/databento/include -I/opt/homebrew/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -Wall -Wextra -Wpedantic -o CMakeFiles/md_engine.dir/src/order_book/order_book.cpp.o -c /Users/maxine/TradingSystem/src/order_book/order_book.cpp",
+  "file": "/Users/maxine/TradingSystem/src/order_book/order_book.cpp",
+  "output": "CMakeFiles/md_engine.dir/src/order_book/order_book.cpp.o"
+},
+{
+  "directory": "/Users/maxine/TradingSystem/build",
+  "command": "/usr/bin/c++  -I/Users/maxine/TradingSystem/include -I/Users/maxine/TradingSystem/databento/include -I/opt/homebrew/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -Wall -Wextra -Wpedantic -o CMakeFiles/md_engine.dir/src/databento_source.cpp.o -c /Users/maxine/TradingSystem/src/databento_source.cpp",
+  "file": "/Users/maxine/TradingSystem/src/databento_source.cpp",
+  "output": "CMakeFiles/md_engine.dir/src/databento_source.cpp.o"
+}
+]

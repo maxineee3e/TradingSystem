@@ -7,7 +7,7 @@
 #include <optional>
 #include <algorithm>
 
-namespace orderbook {
+namespace md {
 
 // 每个价位聚合信息
 struct LevelData {
@@ -26,13 +26,13 @@ struct BookStats {
 class OrderBook {
 public:
   // 基本操作
-  void addOrder(const std::string& id, core::Side side, int64_t px, int64_t sz);
+  void addOrder(const std::string& id, Side side, int64_t px, int64_t sz);
   void modifyOrder(const std::string& id, int64_t new_size);
   void cancelOrder(const std::string& id);
   void fillOrder(const std::string& id, int64_t fill_size);
 
   // 事件入口（把 L3 事件派发到上面的方法）
-  void onEvent(const core::Event& e);
+  void onEvent(const Event& e);
 
   // Top-of-book
   struct Top {
@@ -52,13 +52,13 @@ private:
   std::map<int64_t, LevelData> bids_;
   std::map<int64_t, LevelData> asks_;
   // 全局订单索引（id -> 侧/价/量）
-  std::unordered_map<std::string, core::OrderRef> orders_;
+  std::unordered_map<std::string, OrderRef> orders_;
   // 统计
   BookStats bid_stats_, ask_stats_;
 
-  std::map<int64_t, LevelData>& sideMap(core::Side s)       { return (s==core::Side::Buy)? bids_ : asks_; }
-  const std::map<int64_t, LevelData>& sideMap(core::Side s) const { return (s==core::Side::Buy)? bids_ : asks_; }
-  BookStats& sideStats(core::Side s)       { return (s==core::Side::Buy)? bid_stats_ : ask_stats_; }
+  std::map<int64_t, LevelData>& sideMap(Side s)       { return (s==Side::Buy)? bids_ : asks_; }
+  const std::map<int64_t, LevelData>& sideMap(Side s) const { return (s==Side::Buy)? bids_ : asks_; }
+  BookStats& sideStats(Side s)       { return (s==Side::Buy)? bid_stats_ : ask_stats_; }
 };
 
-} // namespace md
+} 

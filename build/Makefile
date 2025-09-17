@@ -129,6 +129,30 @@ md_engine/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/build
 .PHONY : md_engine/fast
 
+src/databento_source.o: src/databento_source.cpp.o
+.PHONY : src/databento_source.o
+
+# target to build an object file
+src/databento_source.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/src/databento_source.cpp.o
+.PHONY : src/databento_source.cpp.o
+
+src/databento_source.i: src/databento_source.cpp.i
+.PHONY : src/databento_source.i
+
+# target to preprocess a source file
+src/databento_source.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/src/databento_source.cpp.i
+.PHONY : src/databento_source.cpp.i
+
+src/databento_source.s: src/databento_source.cpp.s
+.PHONY : src/databento_source.s
+
+# target to generate assembly for a file
+src/databento_source.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/md_engine.dir/build.make CMakeFiles/md_engine.dir/src/databento_source.cpp.s
+.PHONY : src/databento_source.cpp.s
+
 src/feed/feed_handler.o: src/feed/feed_handler.cpp.o
 .PHONY : src/feed/feed_handler.o
 
@@ -258,6 +282,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... md_engine"
+	@echo "... src/databento_source.o"
+	@echo "... src/databento_source.i"
+	@echo "... src/databento_source.s"
 	@echo "... src/feed/feed_handler.o"
 	@echo "... src/feed/feed_handler.i"
 	@echo "... src/feed/feed_handler.s"

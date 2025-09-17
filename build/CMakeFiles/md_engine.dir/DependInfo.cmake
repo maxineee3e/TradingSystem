@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/maxine/TradingSystem/src/databento_source.cpp" "CMakeFiles/md_engine.dir/src/databento_source.cpp.o" "gcc" "CMakeFiles/md_engine.dir/src/databento_source.cpp.o.d"
   "/Users/maxine/TradingSystem/src/feed/feed_handler.cpp" "CMakeFiles/md_engine.dir/src/feed/feed_handler.cpp.o" "gcc" "CMakeFiles/md_engine.dir/src/feed/feed_handler.cpp.o.d"
   "/Users/maxine/TradingSystem/src/feed/message_parser.cpp" "CMakeFiles/md_engine.dir/src/feed/message_parser.cpp.o" "gcc" "CMakeFiles/md_engine.dir/src/feed/message_parser.cpp.o.d"
   "/Users/maxine/TradingSystem/src/feed/socket_client.cpp" "CMakeFiles/md_engine.dir/src/feed/socket_client.cpp.o" "gcc" "CMakeFiles/md_engine.dir/src/feed/socket_client.cpp.o.d"

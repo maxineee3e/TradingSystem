@@ -4,7 +4,7 @@
 #include <chrono>
 #include <variant>
 
-namespace core {
+namespace md {
 
 using Ts = std::chrono::system_clock::time_point;
 
@@ -26,6 +26,15 @@ struct Cancel { std::string id; };
 struct Fill   { std::string id; int64_t fill_size{0}; }; // 成交导致数量减少（可能至 0）
 struct Heartbeat {};
 
+// 原始字段（不一定要定义成结构体，也可函数参数直接传）
+struct L3Message {
+  std::string action;
+  std::string order_id;
+  std::string side;   // "B"/"A" 或 "B"/"S"
+  int64_t     price{0};
+  int64_t     size{0};
+};
+
 // 统一事件
 using Event = std::variant<Add, Modify, Cancel, Fill, Heartbeat>;
 
@@ -33,4 +42,28 @@ inline const char* sideStr(Side s) {
   switch (s) { case Side::Buy: return "B"; case Side::Sell: return "S"; default: return "?"; }
 }
 
+inline Side parseSide(char c) {
+  return (c == 'B' || c == 'b') ? Side::Buy :
+         (c == 'A' || c == 'a' || c == 'S' || c == 's') ? Side::Sell :
+         Side::Unknown;
+}
+inline Side parseSide(const std::string& s) { return s.empty() ? Side::Unknown : parseSide(s[0]); }
+
+// 工厂：L3 → Event（用你的 Event 设计）
+inline Event makeEvent(const L3Message& m) {
+  if (m.action == "Add" || m.action == "ADD") {
+    OrderRef o{ m.order_id, parseSide(m.side), m.price, m.size };
+    return Add{ std::move(o) };
+  }
+  if (m.action == "Modify" || m.action == "MOD") {
+    return Modify{ m.order_id, m.size /* new_size */ };
+  }
+  if (m.action == "Cancel" || m.action == "CXL") {
+    return Cancel{ m.order_id };
+  }
+  if (m.action == "Fill" || m.action == "FILL") {
+    return Fill{ m.order_id, m.size /* fill_size */ };
+  }
+  return Heartbeat{};
+}
 }

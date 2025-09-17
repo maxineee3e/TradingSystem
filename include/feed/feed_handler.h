@@ -1,37 +1,46 @@
 #pragma once
-#include "core/types.h"
-#include "feed/blocking_queue.h"
-#include "order_book/order_book.h"
+#include <string>
 #include <atomic>
 #include <thread>
+#include "core/types.h"
+#include "feed/blocking_queue.h"
 
 namespace md {
 
-// 简单的发布器接口（这里直接打印；以后可换 ZeroMQ/Redis/文件等）
-class Publisher {
+class Publisher; // 前向声明
+
+class FeedHandler {
 public:
-  explicit Publisher(BlockingQueue<core::Event>& bus) : bus_(bus) {}
-  void start();
-  void stop() { running_ = false; }
-  orderbook::OrderBook& book() { return book_; } // 方便 main 读取指标
+  FeedHandler(BlockingQueue<Event>& bus, Publisher& pub);
+
+  // 历史数据回放（Databento）
+  void startHistoricalFeed(const std::string& dataset,
+                           const std::string& symbols,
+                           const std::string& schema,
+                           const std::string& start,
+                           const std::string& end);
+  void stop();
+
+  // 开关：true = 直接更新 OrderBook；false = 推到队列由 Publisher 消费
+  void enableImmediateMode(bool on) { immediate_mode_ = on; }
+
+  // 供其它数据源复用的“单条记录”入口
+  void onRecord(const std::string& action,
+                const std::string& order_id,
+                const std::string& side,
+                int64_t price,
+                int64_t size);
+  void onRecordQueued(const std::string& action,
+                      const std::string& order_id,
+                      const std::string& side,
+                      int64_t price,
+                      int64_t size);
 
 private:
-  BlockingQueue<core::Event>& bus_;
-  std::atomic<bool> running_{true};
-  std::thread th_;
-  orderbook::OrderBook book_;
-};
-
-// 从 Parquet（经 Python）读取并往队列推事件
-class ParquetSource {
-public:
-  ParquetSource(const std::string& parquet_path, BlockingQueue<core::Event>& bus)
-    : path_(parquet_path), bus_(bus) {}
-  void start();          // 启动子进程（python）并读取其 CSV 行
-  void join();           // 等待结束
-private:
-  std::string path_;
-  BlockingQueue<core::Event>& bus_;
+  BlockingQueue<Event>& bus_;
+  Publisher& publisher_;
+  std::atomic<bool> running_{false};
+  bool immediate_mode_{true};      // 默认立即处理
   std::thread th_;
 };
 

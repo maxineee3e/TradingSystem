@@ -3,7 +3,7 @@
 #include <string>
 #include <core/types.h>
 
-namespace feed {
+namespace md {
 
 // L3 解析器：把一行 CSV / 文本消息解析成 core::Event
 // 输入格式（示例）：
@@ -14,7 +14,7 @@ namespace feed {
 //   "HB,ES,?,-,0,0,0"
 class MessageParser {
 public:
-  std::optional<core::Event> parse_line(const std::string& line) const;
+  std::optional<Event> parse_line(const std::string& line) const;
 };
 
 } // namespace feed
